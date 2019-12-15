@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
+group = 'com.coditory.sandbox'
+description = 'Algorithms'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.5.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.5.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.5.2"
+}
+
+tasks.withType(Test) {
+    testLogging {
+        exceptionFormat = 'full'
+        events = ['passed', 'skipped', 'failed']
+        showStandardStreams = true
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
