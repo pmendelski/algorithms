@@ -1,26 +1,26 @@
 package com.coditory.sandbox.queue;
 
 public class LinkedQueue<T> implements Queue<T> {
-    private static class Node<T> {
+    private class Node {
         final T value;
-        Node<T> next;
+        Node next;
 
         Node(T value) {
             this.value = value;
         }
     }
 
-    private Node<T> first;
-    private Node<T> last;
+    private Node first;
+    private Node last;
     private int size = 0;
 
     @Override
     public void offer(T value) {
         if (first == null) {
-            first = new Node<>(value);
+            first = new Node(value);
             last = first;
         } else {
-            last.next = new Node<>(value);
+            last.next = new Node(value);
             last = last.next;
         }
         size++;

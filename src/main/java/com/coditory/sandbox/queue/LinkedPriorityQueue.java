@@ -3,16 +3,16 @@ package com.coditory.sandbox.queue;
 import java.util.Comparator;
 
 public class LinkedPriorityQueue<T> implements Queue<T> {
-    private static class Node<T> {
+    private class Node {
         final T value;
-        final Node<T> left;
-        final Node<T> right;
+        final Node left;
+        final Node right;
 
         Node(T value) {
             this(value, null, null);
         }
 
-        Node(T value, Node<T> left, Node<T> right) {
+        Node(T value, Node left, Node right) {
             this.value = value;
             this.left = left;
             this.right = right;
@@ -21,7 +21,7 @@ public class LinkedPriorityQueue<T> implements Queue<T> {
 
     private final Comparator<T> comparator;
     private int size = 0;
-    private Node<T> top;
+    private Node top;
 
     public LinkedPriorityQueue(Comparator<T> comparator) {
         this.comparator = comparator;
@@ -33,21 +33,21 @@ public class LinkedPriorityQueue<T> implements Queue<T> {
         size++;
     }
 
-    private Node<T> offer(Node<T> node, T value) {
+    private Node offer(Node node, T value) {
         if (node == null) {
-            return new Node<>(value);
+            return new Node(value);
         }
         if (smaller(value, node.value)) {
-            Node<T> newNode = new Node<>(value, node.left, node.right);
+            Node newNode = new Node(value, node.left, node.right);
             return offer(newNode, node.value);
         }
         if (node.left == null) {
-            Node<T> newLeft = new Node<>(value);
-            return new Node<>(node.value, newLeft, node.right);
+            Node newLeft = new Node(value);
+            return new Node(node.value, newLeft, node.right);
         }
         if (node.right == null) {
-            Node<T> newRight = new Node<>(value);
-            return new Node<>(node.value, node.left, newRight);
+            Node newRight = new Node(value);
+            return new Node(node.value, node.left, newRight);
         }
         if (smaller(node.left, node.right)) {
             return offer(node.right, value);
@@ -66,7 +66,7 @@ public class LinkedPriorityQueue<T> implements Queue<T> {
         return result;
     }
 
-    private Node<T> remove(Node<T> node) {
+    private Node remove(Node node) {
         if (node == null) {
             return null;
         }
@@ -80,11 +80,11 @@ public class LinkedPriorityQueue<T> implements Queue<T> {
             return node.left;
         }
         if (smaller(node.left, node.right)) {
-            Node<T> newLeft = remove(node.left);
-            return new Node<>(node.left.value, newLeft, node.right);
+            Node newLeft = remove(node.left);
+            return new Node(node.left.value, newLeft, node.right);
         }
-        Node<T> newRight = remove(node.right);
-        return new Node<>(node.right.value, node.left, newRight);
+        Node newRight = remove(node.right);
+        return new Node(node.right.value, node.left, newRight);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class LinkedPriorityQueue<T> implements Queue<T> {
         return size;
     }
 
-    private boolean smaller(Node<T> a, Node<T> b) {
+    private boolean smaller(Node a, Node b) {
         return smaller(a.value, b.value);
     }
 

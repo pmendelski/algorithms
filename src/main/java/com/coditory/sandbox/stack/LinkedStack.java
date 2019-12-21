@@ -1,22 +1,22 @@
 package com.coditory.sandbox.stack;
 
 public class LinkedStack<T> implements Stack<T> {
-    private static class Node<T> {
+    private class Node {
         final T value;
-        Node<T> next;
+        Node next;
 
-        Node(T value, Node<T> next) {
+        Node(T value, Node next) {
             this.value = value;
             this.next = next;
         }
     }
 
-    private Node<T> top;
+    private Node top;
     private int size = 0;
 
     @Override
     public void push(T value) {
-        top = new Node<>(value, top);
+        top = new Node(value, top);
         size++;
     }
 
