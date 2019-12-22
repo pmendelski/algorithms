@@ -1,5 +1,7 @@
 package com.coditory.sandbox.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.function.Function;
 
 import static com.coditory.sandbox.tree.Tree.Median.singleValueMedian;
@@ -133,6 +135,36 @@ public class BinarySearchTree implements Tree {
             int leftSize = left != null ? left.size : 0;
             return leftSize + smallerValues;
         }
+
+        void traverseInOrder(Visitor visitor) {
+            if (left != null) {
+                left.traverseInOrder(visitor);
+            }
+            visitor.visit(this.value);
+            if (right != null) {
+                right.traverseInOrder(visitor);
+            }
+        }
+
+        void traversePreOrder(Visitor visitor) {
+            visitor.visit(this.value);
+            if (left != null) {
+                left.traversePreOrder(visitor);
+            }
+            if (right != null) {
+                right.traversePreOrder(visitor);
+            }
+        }
+
+        void traversePostOrder(Visitor visitor) {
+            if (left != null) {
+                left.traversePostOrder(visitor);
+            }
+            if (right != null) {
+                right.traversePostOrder(visitor);
+            }
+            visitor.visit(this.value);
+        }
     }
 
     private Node root;
@@ -143,6 +175,41 @@ public class BinarySearchTree implements Tree {
             this.root = new Node(value);
         } else {
             root.add(value);
+        }
+    }
+
+    @Override
+    public void traverseInOrder(Visitor visitor) {
+        if (root == null) return;
+        root.traverseInOrder(visitor);
+    }
+
+    @Override
+    public void traversePreOrder(Visitor visitor) {
+        if (root == null) return;
+        root.traversePreOrder(visitor);
+    }
+
+    @Override
+    public void traversePostOrder(Visitor visitor) {
+        if (root == null) return;
+        root.traversePostOrder(visitor);
+    }
+
+    @Override
+    public void traverseBfs(Visitor visitor) {
+        if (root == null) return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
+            visitor.visit(node.value);
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
         }
     }
 
@@ -189,11 +256,6 @@ public class BinarySearchTree implements Tree {
         Node node = this.root.findByRank(mid, 0);
         return singleValueMedian(node.value);
     }
-//
-//    @Override
-//    public int[] getSortedArray() {
-//        return new int[0];
-//    }
 
     private <T> T onRootOrNull(Function<Node, T> action) {
         if (root == null) return null;

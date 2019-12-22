@@ -1,5 +1,6 @@
 package com.coditory.sandbox.tree;
 
+import com.coditory.sandbox.base.VisitorToListCollector;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 
 import static com.coditory.sandbox.tree.Tree.Median.singleValueMedian;
 import static com.coditory.sandbox.tree.Tree.Median.twoValuesMedian;
+import static java.util.Arrays.asList;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -126,6 +128,50 @@ public abstract class TreeSpec {
         assertFalse(tree.contains(1000));
         assertFalse(tree.contains(7));
         assertFalse(tree.contains(-1));
+    }
+
+    @Test
+    void shouldTraverseTreeBfs() {
+        // given
+        addToTree(8, 0, 1, 3234, 8, 3, 12, -567, 123);
+        VisitorToListCollector visitor = new VisitorToListCollector();
+        // when
+        tree.traverseBfs(visitor);
+        // then
+        assertIterableEquals(asList(8, 0, 3234, -567, 1, 12, 3, 123), visitor.getItems());
+    }
+
+    @Test
+    void shouldTraverseTreeInOrder() {
+        // given
+        addToTree(8, 0, 1, 3234, 8, 3, 12, -567, 123);
+        VisitorToListCollector visitor = new VisitorToListCollector();
+        // when
+        tree.traverseInOrder(visitor);
+        // then
+        assertIterableEquals(asList(-567, 0, 1, 3, 8, 12, 123, 3234), visitor.getItems());
+    }
+
+    @Test
+    void shouldTraverseTreePreOrder() {
+        // given
+        addToTree(8, 0, 1, 3234, 8, 3, 12, -567, 123);
+        VisitorToListCollector visitor = new VisitorToListCollector();
+        // when
+        tree.traversePreOrder(visitor);
+        // then
+        assertIterableEquals(asList(8, 0, -567, 1, 3, 3234, 12, 123), visitor.getItems());
+    }
+
+    @Test
+    void shouldTraverseTreePostOrder() {
+        // given
+        addToTree(8, 0, 1, 3234, 8, 3, 12, -567, 123);
+        VisitorToListCollector visitor = new VisitorToListCollector();
+        // when
+        tree.traversePostOrder(visitor);
+        // then
+        assertIterableEquals(asList(-567, 3, 1, 0, 123, 12, 3234, 8), visitor.getItems());
     }
 
     void addToTree(int... values) {

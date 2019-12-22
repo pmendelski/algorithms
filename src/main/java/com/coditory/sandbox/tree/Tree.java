@@ -1,8 +1,10 @@
 package com.coditory.sandbox.tree;
 
+import com.coditory.sandbox.shared.Traversable;
+
 import java.util.Objects;
 
-public interface Tree {
+public interface Tree extends Traversable {
     void add(int value);
 
     Integer min();
