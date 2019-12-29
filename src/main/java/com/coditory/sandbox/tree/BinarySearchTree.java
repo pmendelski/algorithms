@@ -1,5 +1,7 @@
 package com.coditory.sandbox.tree;
 
+import com.coditory.sandbox.shared.Visitor;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.function.Function;
@@ -246,13 +248,12 @@ public class BinarySearchTree implements Tree {
     @Override
     public Median median() {
         if (this.root == null) return null;
+        int mid = this.root.size / 2;
         if (this.root.size % 2 == 0) {
-            int mid = this.root.size / 2;
             Node firstNode = this.root.findByRank(mid - 1, 0);
             Node secondNode = this.root.findByRank(mid, 0);
             return twoValuesMedian(firstNode.value, secondNode.value);
         }
-        int mid = this.root.size / 2;
         Node node = this.root.findByRank(mid, 0);
         return singleValueMedian(node.value);
     }

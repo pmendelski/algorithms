@@ -65,12 +65,6 @@ public abstract class TreeSpec {
         assertEquals(singleValueMedian(8), tree.median());
     }
 
-//    @Test
-//    void shouldReturnSortedUniqueValues() {
-//        addToTree(8, 3, 0, 1, 3234, 3, 8, 3, 12, -567, 123);
-//        assertEquals(new Integer[]{-567, 0, 1, 3, 8, 12, 123, 3234}, tree.getSortedArray());
-//    }
-
     @ParameterizedTest
     @CsvSource({
             "-567, -567",

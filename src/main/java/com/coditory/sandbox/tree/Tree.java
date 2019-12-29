@@ -1,10 +1,10 @@
 package com.coditory.sandbox.tree;
 
-import com.coditory.sandbox.shared.Traversable;
+import com.coditory.sandbox.shared.OrderedTraversable;
 
 import java.util.Objects;
 
-public interface Tree extends Traversable {
+public interface Tree extends OrderedTraversable {
     void add(int value);
 
     Integer min();
@@ -20,8 +20,6 @@ public interface Tree extends Traversable {
     boolean contains(int value);
 
     Median median();
-//
-//    int[] getSortedArray();
 
     final class Median {
         static Median singleValueMedian(int value) {
