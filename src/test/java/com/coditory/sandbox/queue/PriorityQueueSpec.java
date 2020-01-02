@@ -18,7 +18,7 @@ public abstract class PriorityQueueSpec {
     }
 
     @Test
-    public void shouldEnqueueElements() {
+    void shouldEnqueueElements() {
         // when
         queue.offer(1);
         queue.offer(3);
@@ -30,7 +30,7 @@ public abstract class PriorityQueueSpec {
     }
 
     @Test
-    public void shouldDequeueOneElement() {
+    void shouldDequeueOneElement() {
         // given
         queue.offer(1);
         queue.offer(3);

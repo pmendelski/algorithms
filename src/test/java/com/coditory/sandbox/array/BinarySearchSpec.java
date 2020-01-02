@@ -9,32 +9,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BinarySearchSpec {
     @Test
-    public void shouldFindElement() {
+    void shouldFindElement() {
         assertEquals(5, findExact(asList(-2, 0, 2, 4, 5, 8, 9), 8));
     }
 
     @Test
-    public void shouldFindFirstElement() {
+    void shouldFindFirstElement() {
         assertEquals(0, findExact(asList(-2, 0, 2, 4, 5, 8, 9), -2));
     }
 
     @Test
-    public void shouldFindLastElement() {
+    void shouldFindLastElement() {
         assertEquals(6, findExact(asList(-2, 0, 2, 4, 5, 8, 9), 9));
     }
 
     @Test
-    public void shouldNotFindNonExistingElement() {
+    void shouldNotFindNonExistingElement() {
         assertEquals(-1, findExact(asList(-2, 0, 2, 4, 5, 8, 9), 10));
     }
 
     @Test
-    public void shouldFindFirstElementOrSmaller() {
+    void shouldFindFirstElementOrSmaller() {
         assertEquals(2, findExactOrSmaller(asList(-2, 0, 2, 4, 5, 8, 9), 3));
     }
 
     @Test
-    public void shouldFindLastElementOrBigger() {
+    void shouldFindLastElementOrBigger() {
         assertEquals(3, findExactOrBigger(asList(-2, 0, 2, 4, 5, 8, 9), 3));
     }
 

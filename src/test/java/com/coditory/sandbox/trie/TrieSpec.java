@@ -11,12 +11,12 @@ public class TrieSpec {
     private final Trie trie = new Trie();
 
     @BeforeEach
-    public void setUpTrie() {
+    void setUpTrie() {
         this.trie.addWords(asList("a", "apple", "argument", "aptitude", "ball", "bat"));
     }
 
     @Test
-    public void shouldConfirmContainingWord() {
+    void shouldConfirmContainingWord() {
         // when
         boolean result = trie.hasWord("apple");
 
@@ -25,7 +25,7 @@ public class TrieSpec {
     }
 
     @Test
-    public void shouldDiscardContainingWord() {
+    void shouldDiscardContainingWord() {
         // when
         boolean result = trie.hasWord("applle");
 
@@ -34,7 +34,7 @@ public class TrieSpec {
     }
 
     @Test
-    public void shouldConfirmContainingPrefix() {
+    void shouldConfirmContainingPrefix() {
         // when
         boolean result = trie.hasPrefix("app");
 
@@ -43,7 +43,7 @@ public class TrieSpec {
     }
 
     @Test
-    public void shouldDiscardContainingPrefix() {
+    void shouldDiscardContainingPrefix() {
         // when
         boolean result = trie.hasPrefix("ax");
 

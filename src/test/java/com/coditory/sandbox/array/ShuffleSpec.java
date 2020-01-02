@@ -9,7 +9,7 @@ import static com.coditory.sandbox.array.Shuffle.shuffle;
 
 public class ShuffleSpec {
     @Test
-    public void shouldShuffleElements() {
+    void shouldShuffleElements() {
         // given
         int[] input = new int[]{0, 2, 4, 6, 8};
         int[] copy = Arrays.copyOf(input, input.length);

@@ -12,7 +12,7 @@ public abstract class SetSpec {
     }
 
     @Test
-    public void shouldAddUniqueItems() {
+    void shouldAddUniqueItems() {
         // given
         Integer[] a = new Integer[]{1, 2, 2, 3, 3, 3};
 

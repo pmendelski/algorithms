@@ -11,18 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BitsSpec {
     @ParameterizedTest
     @ValueSource(ints = {2, 4, 6, 8, 10, 100, 200, 1024})
-    public void shouldConfirmEvenNumbers(int i) {
+    void shouldConfirmEvenNumbers(int i) {
         assertTrue(Bits.isEven(i));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 7, 9, 11, 101, 201, 1025})
-    public void shouldNotConfirmNotEvenNumbers(int i) {
+    void shouldNotConfirmNotEvenNumbers(int i) {
         assertFalse(Bits.isEven(i));
     }
 
     @Test
-    public void shouldConfirmSetBits() {
+    void shouldConfirmSetBits() {
         int[] bits = new int[]{0, 2, 3, 4, 6};
         int val = 0b1011101;
 
@@ -30,7 +30,7 @@ public class BitsSpec {
     }
 
     @Test
-    public void shouldNotConfirmNotSetBits() {
+    void shouldNotConfirmNotSetBits() {
         int[] bits = new int[]{0, 1, 3, 4, 6};
         int val = 0b1011101;
 
@@ -38,7 +38,7 @@ public class BitsSpec {
     }
 
     @Test
-    public void shouldSetNthBit() {
+    void shouldSetNthBit() {
         // given
         // 0b00000000000000000000000000000000
         int value = 0;
@@ -51,7 +51,7 @@ public class BitsSpec {
     }
 
     @Test
-    public void shouldUnsetNthBit() {
+    void shouldUnsetNthBit() {
         // given
         // 0b01111111111111111111111111111111
         int value = Integer.MAX_VALUE;
@@ -64,7 +64,7 @@ public class BitsSpec {
     }
 
     @Test
-    public void sandbox() {
+    void sandbox() {
         log(">" + toBin(6) + "<");
         log(">" + toBin(6 << 1) + " <> " + (6 << 1) + "<");
         log(">" + toBin(-6 << 1) + " <> " + (-6 << 1) + "<");

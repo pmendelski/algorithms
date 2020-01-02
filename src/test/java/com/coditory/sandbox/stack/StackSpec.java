@@ -16,7 +16,7 @@ public abstract class StackSpec {
     }
 
     @Test
-    public void shouldPushElements() {
+    void shouldPushElements() {
         // when
         stack.push(1);
         stack.push(2);
@@ -28,7 +28,7 @@ public abstract class StackSpec {
     }
 
     @Test
-    public void shouldPopOneElement() {
+    void shouldPopOneElement() {
         // given
         stack.push(1);
         stack.push(2);
@@ -44,12 +44,12 @@ public abstract class StackSpec {
     }
 
     @Test
-    public void shouldThrowErrorWhenPopOnEmptyStack() {
+    void shouldThrowErrorWhenPopOnEmptyStack() {
         assertThrows(IllegalStateException.class, stack::pop);
     }
 
     @Test
-    public void shouldPeekTopElement() {
+    void shouldPeekTopElement() {
         // given
         stack.push(1);
         stack.push(2);
