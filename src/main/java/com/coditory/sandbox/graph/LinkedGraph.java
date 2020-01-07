@@ -78,7 +78,7 @@ public class LinkedGraph implements Graph {
     }
 
     @Override
-    public List<Integer> shortedPath(int from, int to) {
+    public List<Integer> shortestPath(int from, int to) {
         // Dijkstra O(N^2)
         Node fromNode = nodesByValue.get(from);
         Node toNode = nodesByValue.get(to);

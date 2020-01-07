@@ -71,6 +71,7 @@ public abstract class GraphSpec {
 
     @Test
     void shouldColorizeGraph() {
+        // tODO: Double check
         graph.addPath(0, 1, 3, 4);
         graph.addPath(0, 2, 3);
         graph.addPath(1, 2);
@@ -102,7 +103,7 @@ public abstract class GraphSpec {
         graph.addEdge(3, 2, 1);
         graph.addEdge(3, 5, 2);
         graph.addEdge(4, 5, 10);
-        List<Integer> path = graph.shortedPath(0, 5);
+        List<Integer> path = graph.shortestPath(0, 5);
         assertIterableEquals(asList(0, 1, 3, 5), path);
     }
 
@@ -110,7 +111,7 @@ public abstract class GraphSpec {
     void shouldReturnEmptyPathForNotConnectedNodes() {
         graph.addEdge(0, 1);
         graph.addEdge(3, 2);
-        List<Integer> path = graph.shortedPath(0, 2);
+        List<Integer> path = graph.shortestPath(0, 2);
         assertIterableEquals(List.of(), path);
     }
 

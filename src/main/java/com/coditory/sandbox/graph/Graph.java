@@ -14,7 +14,7 @@ public interface Graph extends Traversable {
         addEdge(from, to, 1);
     }
 
-    List<Integer> shortedPath(int from, int to);
+    List<Integer> shortestPath(int from, int to);
 
     default void addPath(int... values) {
         if (values == null || values.length == 0) {

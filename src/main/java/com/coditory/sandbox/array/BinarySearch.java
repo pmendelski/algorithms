@@ -20,7 +20,11 @@ public final class BinarySearch {
         } else if (value < values[mid] && mid > low) {
             result = findExact(values, low, mid - 1, value);
         } else if (value == values[mid]) {
-            result = mid;
+            if (mid > low) {
+                result = findExact(values, low, mid, value);
+            } else {
+                result = mid;
+            }
         }
         return result;
     }
@@ -48,7 +52,11 @@ public final class BinarySearch {
                 result = low - 1;
             }
         } else if (value == values[mid]) {
-            result = mid;
+            if (mid > low) {
+                result = findExact(values, low, mid, value);
+            } else {
+                result = mid;
+            }
         }
         return result;
     }
@@ -76,7 +84,11 @@ public final class BinarySearch {
                 result = mid;
             }
         } else if (value == values[mid]) {
-            result = mid;
+            if (mid > low) {
+                result = findExact(values, low, mid, value);
+            } else {
+                result = mid;
+            }
         }
         return result;
     }
