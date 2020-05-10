@@ -1,7 +1,7 @@
 buildscript {
     ext {
         versions = [
-                junit: '5.5.2'
+                junit: '5.6.2'
         ]
         repositories {
             jcenter()

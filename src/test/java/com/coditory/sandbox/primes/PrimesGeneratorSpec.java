@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class PrimesGeneratorTest {
+class PrimesGeneratorSpec {
 
     private final PrimesGenerator primesGenerator = new PrimesGenerator();
 
